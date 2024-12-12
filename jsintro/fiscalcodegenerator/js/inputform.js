@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const cities = await getCities()
 
-
     const getCitiesByProvince = (acronym) =>
         cities.filter(c => c.sigla === acronym)
             .map(c => ({
@@ -42,4 +41,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     selectCities(pe.value)
 
     pe.addEventListener('change', () => selectCities(pe.value))
+
+    Array.from(document.getElementsByTagName('input'))
+        .forEach(t => t.addEventListener('change', (e) => {
+            personalData[e.target.name] = e.target.value
+            console.log(personalData)
+        }))
+    document.getElementById('birth-city').addEventListener(
+        'change', (e) => {
+            personalData.birthCity = e.target.value
+            console.log(personalData)
+        })
+    document.getElementById('gender').addEventListener(
+        'change', (e) => {
+            personalData.gender = e.target.value
+            console.log(personalData)
+        })
+
+    document.getElementById('btn').addEventListener('click',
+        () => document.getElementById('fiscal-code').innerText = fiscalCodeGenerator(personalData)
+    )
 })
