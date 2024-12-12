@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduzione a JavaScript</title>
+    <style>
+        h1 {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .list {
+            list-style-image: url('./assets/img/unselected.svg');
+        }
+
+        .list>.selected {
+            list-style-image: url('./assets/img/selected.svg');
+        }
+
+        #items-list {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HTML DOM</h1>
+    <ul class="list" id="items-list">
+        <li class="selected">Primo elemento</li>
+        <li>Secondo elemento</li>
+        <li>Terzo elemento</li>
+        <li>Quarto elemento</li>
+    </ul>
+    <script>
+        let stringa = "Ciao"
+        var eta = 30
+        const PI = 3.14
+        let a = [1, 2, 3, 4, 5]
+        const data = { nome: "Archimede", cognome: "Pitagorico" }
+        console.log(data)
+        data.nome = "ARCHIMEDE"
+        console.log(data)
+        a.push(new Date(), 'paperino')
+        console.log(a)
+        const first = a.pop()
+        console.log(first, a)
+        const i = a.shift()
+        console.log(i, a)
+        a.unshift("New item")
+        console.log(a)
+        a.sort()
+        console.log(a)
+        a.reverse()
+        console.log(a)
+
+        console.log(a.concat([6, 7, 8, 9]))
+
+        const a1 = [1, 2, 3]
+        const a2 = [...a1, 4, 5, 6]
+        console.log(a2)
+        const data1 = { ...data, cognome: data.cognome.toUpperCase() }
+        console.log(data1)
+        const obj1 = { x: 10, y: 'Paperino' }
+        const obj2 = { y: 3.156, z: new Date() }
+        const fusion = { ...obj1, ...obj2 }
+        console.log(obj1, obj2, fusion)
+
+        function somma(a, b, c, d) {
+            return a + b + c + d
+        }
+        numbers = [1, 2, 3, 4, 5, 6]
+        console.log(somma(...numbers))
+
+        function sum(numbers) {
+            if (numbers.length === 0) return 0
+            const [first, ...others] = numbers
+            return first + sum(others)
+        }
+        console.log(sum([1, 2, 3, 4]))
+    </script>
+</body>
+
+</html>

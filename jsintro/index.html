@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduzione a JavaScript</title>
+    <style>
+        h1 {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .list {
+            list-style-image: url('./assets/img/unselected.svg');
+        }
+
+        .list>.selected {
+            list-style-image: url('./assets/img/selected.svg');
+        }
+
+        #items-list {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HTML DOM</h1>
+    <ul class="list" id="items-list">
+        <li class="selected">Primo elemento</li>
+        <li>Secondo elemento</li>
+        <li>Terzo elemento</li>
+        <li>Quarto elemento</li>
+    </ul>
+    <div>
+        <span>Node type:</span><span id="node-type"></span>
+    </div>
+    <div>
+        <span>Node name:</span><span id="node-name"></span>
+    </div>
+    <div>
+        <span>Node value:</span><span id="node-value"></span>
+    </div>
+    <div>
+        <button type="button" id="next-sibling">Prossimo</button>
+        <button type="button" id="previous-sibling">Precedente</button>
+        <button type="button" id="first-child">Primo figlio</button>
+    </div>
+
+    <div id="sample"></div>
+    <script>
+        let root = document
+
+        let current = root
+
+        const id = (id) => document.getElementById(id)
+        const tag = (id) => document.getElementsByTagName(id)
+        const classes = (c) => document.getElementsByClassName(c)
+
+        function showNode(n) {
+            id("node-type").innerText = n.nodeType
+            id("node-name").innerText = n.nodeName
+            id("node-value").innerText = n.nodeValue ?? 'N/A'
+        }
+        showNode(current)
+        id("sample").innerHTML = tag("li")[0].outerHTML
+
+        id("next-sibling").addEventListener('click', () => {
+            let s = current.nextSibling
+            if (s) current = s
+            showNode(current)
+        })
+        id("previous-sibling").addEventListener('click', () => {
+            let s = current.previousSibling
+            if (s) current = s
+            showNode(current)
+        })
+        id("first-child").addEventListener('click', (e) => {
+            console.log(e)
+            let s = current.firstChild
+            if (s) current = s
+            showNode(current)
+        })
+
+    </script>
+</body>
+
+</html>

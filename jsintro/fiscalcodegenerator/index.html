@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore di Codice Fiscale Italiano</title>
+</head>
+
+<body>
+    <h1>Dati Anagrafici</h1>
+    <div class="form">
+        <div class="row">
+            <label for="firstName">Nome:</label>
+            <input id="firstName" name="firstName">
+        </div>
+        <div class="row">
+            <label for="lastName">Cognome:</label>
+            <input id="lastName" name="lastName">
+        </div>
+        <div class="row">
+            <label for="birthday">Data di nascita:</label>
+            <input id="birthday" name="birthday" type="date">
+        </div>
+        <div class="row">
+            <label for="gender">Sesso:</label>
+            <select id="gender" name="gender">
+                <option value="m">M</option>
+                <option value="f">F</option>
+            </select>
+        </div>
+        <div class="row">
+            <label for="birth-province">Città di nascita:</label>
+            <select id="birth-province" name="birthProvince"></select>
+            <select id="birth-city" name="birthCity"></select>
+        </div>
+        <div>
+            <button type="button">Calcola Codice Fiscale</button>
+        </div>
+    </div>
+    <div id="fiscal-code"></div>
+
+    <script src="./js/cities.js"></script>
+    <script src="./js/inputform.js"></script>
+</body>
+
+</html>

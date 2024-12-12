@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+
+<body>
+    <h1>Promises</h1>
+    <div id="result"><span>Sto caricando i dati...</span></div>
+    <script>
+        let promise = new Promise((s, r) => {
+            setTimeout(() => {
+                const data = Array.from({ length: 100 }).map((_, i) => ({ id: i, name: `Nome ${i}`, cognome: 'Test' }))
+                s(data)
+            }, 3000)
+        })
+
+        const p = document.getElementById('result')
+
+        promise
+            .then((data) => {
+                const div = document.getElementById('result')
+                let children = Array.from(div.children)
+                children.forEach(e => div.removeChild(e))
+                const ul = document.createElement('ul')
+                data.forEach(d => {
+                    const li = document.createElement('li')
+                    li.innerText = d.name
+                    li.setAttribute('data-id', d.id)
+                    ul.appendChild(li)
+                })
+                div.appendChild(ul)
+            })
+            .catch((e) => p.innerText = e)
+    </script>
+</body>
+
+</html>

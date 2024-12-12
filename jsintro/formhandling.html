@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Handling</title>
+</head>
+
+<body>
+    <div>
+        <label for="name">Nome:</label>
+        <input id="name" name="name">
+    </div>
+    <div>
+        <label for="surname">Cognome:</label>
+        <input id="surname" name="surname">
+    </div>
+    <div>
+        <label for="birthday">Data di nascita:</label>
+        <input id="birthday" type="date" name="birthday">
+    </div>
+    <div>
+        <label for="gender_male">Sesso:</label>
+        <input id="gender_male" type="radio" name="gender" value="m">M
+        <input type="radio" name="gender" value='f'>F
+    </div>
+    <div>
+        <label for="birthCity">Città di nascita:</label>
+        <input id="birthCity" name="birthCity">
+    </div>
+    <div>
+        <button type="button">Leggi Dati</button>
+    </div>
+
+    <script>
+        let state = { name: 'Nome', surname: 'Cognome', birthday: '2024-12-12', gender: 'm', birthCity: 'Roma' }
+        const inputs = document.getElementsByTagName('input')
+        for (let t = 0; t < inputs.length; ++t) {
+            inputs[t].addEventListener('change', (e) => {
+                let i = e.target
+                state = { ...state, [i.name]: i.value }
+                console.log(state)
+            })
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            Object.getOwnPropertyNames(state) // recupera tutte le proprietà di un oggetto
+                .forEach(p => { // qui le attraversiamo
+                    let i = document.getElementsByName(p) // qui recuperiamo gli oggetti tramite il loro nome e prendiamo il primo che troviamo
+                    for (let j = 0; j < i.length; ++j) {
+                        let e = i[j]
+                        if (e) {
+                            if (e.getAttribute("type") === 'radio') {
+                                let checked = e.getAttribute('value') === state[p]
+                                e.setAttribute('checked', checked)
+                            }
+                            else
+                                e.value = state[p]
+                        }
+                    }
+                })
+        })
+    </script>
+</body>
+
+</html>

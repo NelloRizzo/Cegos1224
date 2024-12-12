@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduzione a JavaScript</title>
+    <style>
+        h1 {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .list {
+            list-style-image: url('./assets/img/unselected.svg');
+        }
+
+        .list>.selected {
+            list-style-image: url('./assets/img/selected.svg');
+        }
+
+        #items-list {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HTML DOM</h1>
+    <ul class="list" id="items-list">
+        <li class="selected">Primo elemento</li>
+        <li>Secondo elemento</li>
+        <li>Terzo elemento</li>
+        <li>Quarto elemento</li>
+    </ul>
+    <script>
+        function createObject(name, surname) {
+            const fullName = function () { return name + ' ' + surname }
+            const toString = function () {
+                return name + ' ' + surname
+            }
+            return {
+                name: name, surname: surname, asString: toString, fullName: fullName
+            }
+        }
+        const myData = createObject("Archimede", "Pitagorico")
+        console.log(myData.asString(), myData.fullName())
+
+        function sortAsc(array) {
+            for (let i = 0; i < array.length - 1; ++i) {
+                for (let j = i + 1; j < array.length; ++j) {
+                    if (array[i] > array[j]) {
+                        [array[i], array[j]] = [array[j], array[i]]
+                    }
+                }
+            }
+        }
+        function sortDesc(array) {
+            for (let i = 0; i < array.length - 1; ++i) {
+                for (let j = i + 1; j < array.length; ++j) {
+                    if (array[i] < array[j]) {
+                        [array[i], array[j]] = [array[j], array[i]]
+                    }
+                }
+            }
+        }
+        function sort(array, mustChange) {
+            for (let i = 0; i < array.length - 1; ++i) {
+                for (let j = i + 1; j < array.length; ++j) {
+                    if (mustChange(array[i], array[j])) {
+                        [array[i], array[j]] = [array[j], array[i]]
+                    }
+                }
+            }
+        }
+        numbers = [234, 354, 5768, 34125, 679, 5780, 62, 4759]
+        console.log("Array prima dell'ordinamento", numbers)
+        sortAsc(numbers)
+        console.log("Array dopo l'ordinamento", numbers)
+        sortDesc(numbers)
+        console.log("Array dopo l'ordinamento decrescente", numbers)
+        sort(numbers, function (a, b) { return a < b })
+        console.log("Array ordinato tramite funzione", numbers)
+        sort(numbers, function (a, b) { return a > b })
+        console.log("Array ordinato tramite funzione", numbers)
+        sort(numbers, function (a, b) { return a % 2 == 0 ? a > b : a < b })
+        console.log("Array ordinato tramite funzione", numbers)
+        sort(numbers, (a, b) => a % 2 == 0 ? a > b : a < b)
+        console.log("Array ordinato tramite funzione", numbers)
+
+        numbers
+            .filter((n, i, numbers) => i % 2 == 0 && n % 2 == 0)
+            .map((n, i) => `numbers[${i}] = ${n}`)
+            .forEach(n => console.log(n))
+        console.log(numbers.reduce((a, n) => `${a}-${n}`, 'Riduzione'))
+
+        const json = [{ id: 1, name: 'Paperino' }, { id: 2, name: 'Topolino' }, { id: 3, name: 'Paperone' }]
+        const urlBase = '/show'
+
+        json.filter(n => n.id % 2 != 0).map(n => `<a href='${urlBase}/${n.id}'>${n.name}</a>`).forEach(n => console.log(n))
+    </script>
+</body>
+
+</html>

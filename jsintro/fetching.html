@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetching</title>
+    <style>
+        .done {
+            list-style-image: url('./assets/img/selected.svg');
+            text-decoration: line-through;
+        }
+
+        .undone {
+            list-style-image: url('./assets/img/unselected.svg');
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fetching</h1>
+
+    <ul id="data"></ul>
+
+    <script>
+        const ul = document.getElementById('data')
+        const url = 'https://jsonplaceholder.typicode.com/todos/'
+
+        const data = { id: 1 }
+        document.addEventListener("DOMContentLoaded", async () => {
+            const response = await fetch(url, {
+                method: 'get',
+                headers: { 'Content-Type': 'application/json' },
+                //body: JSON.stringify(data)
+            })
+            const data = await response.json()
+            data.forEach(item => {
+                const li = document.createElement('li')
+                li.innerText = item.title
+                li.classList.add(item.completed ? 'done' : 'undone')
+                ul.appendChild(li)
+            })
+            //                .then(response => response.json())
+            //                .then(data => {
+            //                    data.forEach(item => {
+            //                        const li = document.createElement('li')
+            //                        li.innerText = item.title
+            //                        li.classList.add(item.completed ? 'done' : 'undone')
+            //                        ul.appendChild(li)
+            //                    })
+            //                })
+        })
+    </script>
+</body>
+
+</html>
