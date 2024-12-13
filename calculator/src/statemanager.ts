@@ -75,4 +75,21 @@ const execute: ActionWithPayload<string> = (s, o) => {
     return s
 }
 
-export { initialState, addComma, addZero, addDigit, execute }
+const reset: Action = (state) => {
+    return { ...state, display: '0.0', mustClearDisplay: true, accumulator: 0, nextOperation: '=' }
+}
+const clearError: Action = (state) => {
+    return { ...state, display: '0.0', mustClearDisplay: true }
+}
+
+const StateManager = {
+    initialState: initialState,
+    addComma: addComma,
+    addZero: addZero,
+    addDigit: addDigit,
+    execute: execute,
+    reset: reset,
+    clearError: clearError
+}
+//export { initialState, addComma, addZero, addDigit, execute, reset, clearError }
+export default StateManager

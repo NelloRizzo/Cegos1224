@@ -1,18 +1,28 @@
-import { initialState, addDigit, addZero, addComma, execute } from "./statemanager.js";
+//import { initialState, addDigit, addZero, addComma, execute, reset, clearError } from "./statemanager.js"
+import StateManager from "./statemanager.js";
 document.addEventListener('DOMContentLoaded', () => {
-    let state = initialState;
+    var _a, _b;
+    let state = StateManager.initialState;
     const updateDisplay = (text) => {
         const display = document.getElementById('display');
         display.innerText = text;
     };
+    (_a = document.getElementById('reset')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
+        state = StateManager.reset(state);
+        updateDisplay(state.display);
+    });
+    (_b = document.getElementById('clear-error')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', () => {
+        state = StateManager.clearError(state);
+        updateDisplay(state.display);
+    });
     Array.from(document.getElementsByClassName('zero'))
         .forEach(d => d.addEventListener('click', () => {
-        state = addZero(state);
+        state = StateManager.addZero(state);
         updateDisplay(state.display);
     }));
     Array.from(document.getElementsByClassName('comma'))
         .forEach(d => d.addEventListener('click', () => {
-        state = addComma(state);
+        state = StateManager.addComma(state);
         updateDisplay(state.display);
     }));
     Array.from(document.getElementsByClassName('digit'))
@@ -20,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         d.addEventListener('click', (e) => {
             if (e.target instanceof Element) {
                 const digit = e.target.getAttribute("data-id");
-                state = addDigit(state, Number.parseInt(digit));
+                state = StateManager.addDigit(state, Number.parseInt(digit));
                 updateDisplay(state.display);
             }
         });
@@ -30,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         d.addEventListener('click', (e) => {
             if (e.target instanceof Element) {
                 const operation = e.target.getAttribute("data-op");
-                state = execute(state, operation);
+                state = StateManager.execute(state, operation);
                 updateDisplay(state.display);
             }
         });

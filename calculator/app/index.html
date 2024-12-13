@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,8 @@
     <title>Calculator</title>
     <style>
         .calculator {
+            box-shadow: 1px 1px 3px inset;
+            padding: 20px;
             margin: 0 auto;
             width: 50vw;
             display: flex;
@@ -16,24 +18,48 @@
         .row {
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: space-evenly;
         }
 
+        .logo {
+            flex-grow: 1;
+            margin: 5px;
+            padding: 5px;
+            text-align: center;
+            align-content: center;
+        }
         .button {
             flex-grow: 1;
             margin: 5px;
-            padding: 10px;
+            padding: 5px;
             background-color: rgb(43, 43, 43);
             text-align: center;
             color: white;
             border-radius: 5px;
+            border: 1px solid transparent;
         }
 
+        .button:hover {
+            box-shadow: 0px 0px 3px 3px aqua;
+            transform: translate(1px,1px);
+        }
+        .op {
+            background-color: navy ;
+        }
         .display {
+            font-family: monospace;
+            font-size: 1.5em;
             text-align: end;
             margin: 5px;
             padding: 5px;
             border-style: inset;
+        }
+        .special {
+            font-size: smaller;
+            font-style: italic;
+        }
+        .alert {
+            background-color: brown;
         }
     </style>
 </head>
@@ -42,9 +68,9 @@
     <div class="calculator">
         <div class="display" id="display">0.0</div>
         <div class="row">
-            <div class="button " ></div>
-            <div class="button " >CE</div>
-            <div class="button " >C</div>
+            <div class="logo"> </div>
+            <div class="button alert" id="clear-error">CE</div>
+            <div class="button alert" id="reset">C</div>
             <div class="button op" data-op="/">&divide;</div>
         </div>
         <div class="row">
@@ -66,7 +92,7 @@
             <div class="button op" data-op="+">&plus;</div>
         </div>
         <div class="row">
-            <div class="button op" data-op="^"><em>x<sup>n</sup></em></div>
+            <div class="button op special" data-op="^">x<sup>n</sup></div>
             <div class="button zero">0</div>
             <div class="button comma">,</div>
             <div class="button op" data-op="=">&equals;</div>

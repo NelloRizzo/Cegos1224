@@ -59,4 +59,20 @@ const execute = (s, o) => {
     s.mustClearDisplay = true;
     return s;
 };
-export { initialState, addComma, addZero, addDigit, execute };
+const reset = (state) => {
+    return Object.assign(Object.assign({}, state), { display: '0.0', mustClearDisplay: true, accumulator: 0, nextOperation: '=' });
+};
+const clearError = (state) => {
+    return Object.assign(Object.assign({}, state), { display: '0.0', mustClearDisplay: true });
+};
+const StateManager = {
+    initialState: initialState,
+    addComma: addComma,
+    addZero: addZero,
+    addDigit: addDigit,
+    execute: execute,
+    reset: reset,
+    clearError: clearError
+};
+//export { initialState, addComma, addZero, addDigit, execute, reset, clearError }
+export default StateManager;
