@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .calculator {
+            margin: 0 auto;
+            width: 50vw;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .digit {
+            margin: 5px;
+            padding: 10px;
+        }
+        .display {
+            text-align: end;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0.0</div>
+        <div class="row">
+            <div class="digit" data-id="7">7</div>
+            <div class="digit" data-id="8">8</div>
+            <div class="digit" data-id="9">9</div>
+        </div>
+        <div class="row">
+            <div class="digit" data-id="4">4</div>
+            <div class="digit" data-id="5">5</div>
+            <div class="digit" data-id="6">6</div>
+        </div>
+        <div class="row">
+            <div class="digit" data-id="1">1</div>
+            <div class="digit" data-id="2">2</div>
+            <div class="digit" data-id="3">3</div>
+        </div>
+    </div>
+
+    <script type="module" src="./js/calculator.js"></script>
+</body>
+
+</html>
