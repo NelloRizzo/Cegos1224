@@ -1,0 +1,17 @@
+<div class="post">
+    <div [id]="post?.id" [ngClass]="{ 'read': post?.read }">{{post?.title}}
+        <span *ngIf="post?.read" (click)="toggleRead()">Letto</span>
+        <span *ngIf="!post?.read" (click)="toggleRead()">Da leggere</span>
+
+        <span appCustomHilight hilightColor="navy" foreground="yellow"> Rating:
+            <span [ngSwitch]="post?.rating">
+                <span *ngSwitchCase="1">Uno</span>
+                <span *ngSwitchCase="2">Due</span>
+                <span *ngSwitchCase="3">Tre</span>
+                <span *ngSwitchCase="4">Quattro</span>
+                <span *ngSwitchCase="5">Cinque</span>
+                <span *ngSwitchDefault>Non specificato</span>
+            </span>
+        </span>
+    </div>
+</div>

@@ -13,6 +13,21 @@
     <input type="color" [(ngModel)]="model.color" />
     <span>{{ model.color }}</span>
   </div>
+  <div>
+    <span>Messaggio:</span>
+    <input type="text" [(ngModel)]="message" />
+  </div>
+
+  <app-sample message="Ciao da App"></app-sample>
+  <app-sample message="Secondo messaggio"></app-sample>
+  <app-sample message="Terzo messaggio"></app-sample>
+  <app-sample [message]="message" (messageModified)="handleChildEvent($event)"></app-sample>
+
+  <ul>
+    <li *ngFor="let post of blog">
+      <app-post [postId]="post.id"></app-post>
+    </li>
+  </ul>
 </main>
 
 <router-outlet />
