@@ -4,11 +4,13 @@ import { RouterOutlet } from '@angular/router';
 import { SampleComponent } from './sample/sample/sample.component';
 import { PostComponent } from './blog/post/post.component';
 import { CommonModule } from '@angular/common';
-import { blog, Post } from './blog/models/post.model';
+import { Post } from './blog/models/post.model';
+import { FilterPipe } from './pipes/filter.pipe';
+import { BlogService } from './services/blog.service';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, FormsModule, SampleComponent, PostComponent],
+  imports: [CommonModule, FilterPipe, RouterOutlet, FormsModule, SampleComponent, PostComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -16,8 +18,10 @@ export class AppComponent implements OnInit, OnDestroy {
   message: string = 'Guardate che Spettacolo!!!';
   private start: number = 0;
 
-  blog: Array<Post> = blog
-  
+  blog: Array<Post> = []
+
+  numbers = Array.from({ length: 100 }).map((_, i) => i)
+
   model = {
     title: 'Prima Applicazione Angular',
     subtitle: this.message,
@@ -37,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.model.timing++;
   }
 
-  constructor() {
+  constructor(private service: BlogService) {
     console.log("Costruttore")
   }
 
@@ -48,6 +52,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log('Componente inizializzato')
     this.slider();
+    this.blog = this.service.getBlog()
   }
 
   handleChildEvent(m: string) {

@@ -14,7 +14,9 @@
             </span>
         </span>
 
-        <span appCustomHilight hilightColor="black" foreground="white"> Rating: {{ post?.rating ?? 0 | numberToString | uppercase }}</span>
+        <span appCustomHilight hilightColor="black" foreground="white">
+            Rating: {{ post?.rating ?? 0 | numberToString | uppercase }}
+        </span>
 
         <span>Pubblicato il {{ post?.publishedAt ?? '2024-12-18T00:00:00' | date: 'EEEE, dd MMMM yyyy - HH:mm:ss'
             }}</span>

@@ -28,6 +28,12 @@
       <app-post [postId]="post.id"></app-post>
     </li>
   </ul>
+
+  <ol>
+    <li *ngFor="let number of numbers | filter: 'even' : 10">
+      <span>{{number}}</span>
+    </li>
+  </ol>
 </main>
 
 <router-outlet />
