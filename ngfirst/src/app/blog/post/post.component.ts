@@ -2,10 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { blog, Post } from '../models/post.model';
 import { CommonModule } from '@angular/common';
 import { CustomHilightDirective } from '../../directives/custom-hilight.directive';
+import { NumberToStringPipe } from '../../pipes/numbertostring.pipe';
 
 @Component({
   selector: 'app-post',
-  imports: [CommonModule, CustomHilightDirective],
+  imports: [CommonModule, CustomHilightDirective, NumberToStringPipe],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss'
 })

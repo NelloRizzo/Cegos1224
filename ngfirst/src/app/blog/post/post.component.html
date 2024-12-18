@@ -1,5 +1,5 @@
 <div class="post">
-    <div [id]="post?.id" [ngClass]="{ 'read': post?.read }">{{post?.title}}
+    <div [id]="post?.id" [ngClass]="{ 'read': post?.read }">{{ post?.title | uppercase | lowercase }}
         <span *ngIf="post?.read" (click)="toggleRead()">Letto</span>
         <span *ngIf="!post?.read" (click)="toggleRead()">Da leggere</span>
 
@@ -13,5 +13,10 @@
                 <span *ngSwitchDefault>Non specificato</span>
             </span>
         </span>
+
+        <span appCustomHilight hilightColor="black" foreground="white"> Rating: {{ post?.rating ?? 0 | numberToString | uppercase }}</span>
+
+        <span>Pubblicato il {{ post?.publishedAt ?? '2024-12-18T00:00:00' | date: 'EEEE, dd MMMM yyyy - HH:mm:ss'
+            }}</span>
     </div>
 </div>
