@@ -1,0 +1,17 @@
+.cities {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .filter .label::after {
+        content: ': ';
+    }
+    input {
+        border-radius: 5px;
+        padding: 15px;
+    }
+
+    .list {
+        list-style: none;
+    }
+}

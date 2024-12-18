@@ -1,0 +1,11 @@
+<div class="cities">
+    <div class="filter">
+        <span class="label">Nome che contiene</span><input [(ngModel)]="name">
+    </div>
+    <div class="loading" *ngIf="cities.length == 0">Loading...</div>
+    <ul class="list" *ngIf="cities.length">
+        <li *ngFor="let city of cities | nameFilter : name">
+            <app-city [city]="city"></app-city>
+        </li>
+    </ul>
+</div>
