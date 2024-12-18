@@ -1,0 +1,18 @@
+<main>
+  <h1 style="font-variant: small-caps">{{ model.title }}</h1>
+  <h2 [style.color]="model.color">{{ model.subtitle }}</h2>
+
+  <div>
+    <span>Timing:</span>
+    <input type="range" min="100" max="2000" [(ngModel)]="model.timing" />
+    <span>{{ model.timing }}</span>
+    <span class='button' (click)='increment()'>Incrementa Timing</span>
+  </div>
+  <div>
+    <span>Color:</span>
+    <input type="color" [(ngModel)]="model.color" />
+    <span>{{ model.color }}</span>
+  </div>
+</main>
+
+<router-outlet />

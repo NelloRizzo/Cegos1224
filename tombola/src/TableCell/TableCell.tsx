@@ -8,7 +8,6 @@ interface TableCellProps {
 }
 const TableCell: FC<TableCellProps> = ({ number, className }) => {
     const drawn = useSelector((s: State) => s.drawn)
-    console.log(drawn)
     const cl = (drawn?.indexOf(number) >= 0) ? 'cell drawn' : 'cell'
     return (
         <div className={`${className} ${cl}`}>{number}</div>
