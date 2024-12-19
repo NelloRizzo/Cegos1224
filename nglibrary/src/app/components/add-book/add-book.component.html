@@ -1,0 +1,26 @@
+<h1>Nuovo Libro</h1>
+
+<div class="form">
+    <div class="form-group">
+        <label for="title">Titolo</label>
+        <input [(ngModel)]="book.title" id="title">
+    </div>
+    <div class="form-group">
+        <label>Autori</label>
+        <div class="authors">
+            <span class='author' *ngFor='let author of book.authors'>{{author}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="author">Nuovo autore</label>
+        <input [(ngModel)]="newauthor" id="author"><a (click)="addAuthor()">Aggiungi Autore</a>
+    </div>
+    <div class="form-group">
+        <label for="year">Anno pubblicazione</label>
+        <input type="number" [(ngModel)]="book.publicationYear" id="year">
+    </div>
+    <div class="form-group">
+        <a (click)="addBook()">Aggiungi al Catalogo</a>
+        <a routerLink="/books">Torna alla Lista</a>
+    </div>
+</div>

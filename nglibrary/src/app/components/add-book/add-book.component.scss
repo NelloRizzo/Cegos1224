@@ -1,0 +1,27 @@
+.form {
+    display: flex;
+    flex-direction: column;
+
+    .form-group {
+        display: flex;
+        flex-direction: row;
+        margin-top: 5px;
+
+        label {
+            flex-grow: 0;
+            margin-right: 3px;
+            padding: 3px;
+        }
+
+        input {
+            flex-grow: 1;
+        }
+        a {
+            margin: 5px;
+            user-select: none;
+            background-color: gray;
+            padding: 3px;
+            border-radius: 5px;
+        }
+    }
+}

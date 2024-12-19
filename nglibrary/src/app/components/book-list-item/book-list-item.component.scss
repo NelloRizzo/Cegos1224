@@ -1,0 +1,12 @@
+.book {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .actions {
+        i {
+            user-select: none;
+            cursor: pointer;
+        }
+    }
+}

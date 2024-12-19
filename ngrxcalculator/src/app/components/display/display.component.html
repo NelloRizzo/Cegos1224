@@ -1,1 +1,1 @@
-<div class="display">{{text$ | async}}</div>
+<div class="display">{{ ((text$ | async) ?? '') | comma }}</div>

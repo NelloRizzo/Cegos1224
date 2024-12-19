@@ -1,0 +1,5 @@
+<h1>Catalogo</h1>
+<a routerLink="/books/add">Nuovo Libro</a>
+<div class="book-list">
+    <app-book-list-item *ngFor="let book of books$ | async" [book]="book"></app-book-list-item>
+</div>

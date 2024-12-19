@@ -6,7 +6,7 @@
     padding: 5px;
     border: 5px ridge gray;
 
-    
+
     .row {
         display: flex;
         flex: 1 1 0;
@@ -15,10 +15,12 @@
     }
 }
 
-app-button {
-    flex-grow: 1;
+h1 {
+    text-align: center;
 }
 
-app-operator {
+app-button,
+app-operator,
+app-comma {
     flex-grow: 1;
 }

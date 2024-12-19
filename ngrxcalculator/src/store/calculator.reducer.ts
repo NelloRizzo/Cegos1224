@@ -34,7 +34,8 @@ const handlOperator = (s: CalculatorState, op: string): CalculatorState => {
 }
 const _reducer = createReducer(
     initialState,
-    on(digitClicked, (s, { digit }) => handleDigit(s, digit)),
+    //on(digitClicked, (s, { digit }) => handleDigit(s, digit)),
+    on(digitClicked, (s, props) => handleDigit(s, props.digit)),
     on(commaClicked, s => handleComma(s)),
     on(operatorClicked, (s, { op }) => handlOperator(s, op))
 )

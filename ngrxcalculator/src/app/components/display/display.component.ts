@@ -1,12 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectDisplay } from '../../../store/calculator.selectors';
 import { AsyncPipe } from '@angular/common';
+import { CommaPipe } from '../../pipes/comma.pipe';
 
 @Component({
   selector: 'app-display',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, CommaPipe],
   templateUrl: './display.component.html',
   styleUrl: './display.component.scss'
 })

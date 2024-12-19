@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { operatorClicked } from '../../../store/calculator.actions';
 
 @Component({
   selector: 'app-operator',
@@ -9,5 +11,14 @@ import { Component, Input } from '@angular/core';
 export class OperatorComponent {
 
   @Input()
-  operator?: string
+  operator: string = '='
+
+  @Input()
+  operation: string = '='
+
+  constructor(private store: Store) { }
+
+  handleClick() {
+    this.store.dispatch(operatorClicked({ op: this.operation }))
+  }
 }
