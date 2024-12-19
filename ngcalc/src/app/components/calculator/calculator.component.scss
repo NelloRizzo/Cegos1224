@@ -1,0 +1,24 @@
+.calculator {
+    margin: 0 auto;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    border: 5px ridge gray;
+
+    
+    .row {
+        display: flex;
+        flex: 1 1 0;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+app-button {
+    flex-grow: 1;
+}
+
+app-operator {
+    flex-grow: 1;
+}

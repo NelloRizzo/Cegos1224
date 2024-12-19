@@ -1,0 +1,8 @@
+<main>
+  {{count$|async}}
+  <button type="button" (click)="increment()">Incrementa</button>
+  <button type="button" (click)="decrement()">Decrementa</button>
+  <button type="button" (click)="reset()">Reset</button>
+</main>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,27 @@
+<div class="calculator">
+    <app-display [text]="state.display"></app-display>
+    <div class="row">
+        <app-button text="7" (clicked)="handleClick($event)"></app-button>
+        <app-button text="8" (clicked)="handleClick($event)"></app-button>
+        <app-button text="9" (clicked)="handleClick($event)"></app-button>
+        <app-operator operator="&div;"></app-operator>
+    </div>
+    <div class="row">
+        <app-button text="4" (clicked)="handleClick($event)"></app-button>
+        <app-button text="5" (clicked)="handleClick($event)"></app-button>
+        <app-button text="6" (clicked)="handleClick($event)"></app-button>
+        <app-operator operator="&times;"></app-operator>
+    </div>
+    <div class="row">
+        <app-button text="1" (clicked)="handleClick($event)"></app-button>
+        <app-button text="2" (clicked)="handleClick($event)"></app-button>
+        <app-button text="3" (clicked)="handleClick($event)"></app-button>
+        <app-operator operator="&minus;"></app-operator>
+    </div>
+    <div class="row">
+        <app-operator operator="&plusmn;"></app-operator>
+        <app-button text="0"></app-button>
+        <app-button text=","></app-button>
+        <app-operator operator="&plus;"></app-operator>
+    </div>
+</div>
